@@ -2,6 +2,7 @@ package trainee_test;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -38,7 +39,7 @@ public class Read_function {
     // Import the File class
 
 
-    public static void main(String[] args) {
+    public void first_read() {
         File myObj = new File("C:\\crosskey_trainee_test\\src\\main\\resources\\prospects.txt");
         //List<Customer> list = (List<Customer>) new Customer();
         if (myObj.exists()) {
@@ -58,7 +59,27 @@ public class Read_function {
         }
     }
 
-    public static void read(File myObj) throws IOException {
+    public void calc(List<Customer> customerList){
+        for (int i = 0; i < customerList.size();i++)
+        {
+            System.out.println(customerList.get(i).getName());
+            System.out.println(customerList.get(i).getTotal());
+            System.out.println(customerList.get(i).getInterest());
+            System.out.println(customerList.get(i).getYears());
+
+            System.out.println(
+                    "Prospect"+ i + ":" + customerList.get(i).getName() + "wants to borrow" + customerList.get(i).getTotal() +
+                            "for a period of" + customerList.get(i).getYears() + "years and pay" + customerList.get(i).getInterest() + "each month"
+            );
+            int calc_return = 0;
+            Calc_function calc_function = new Calc_function();
+            calc_return = calc_function.Mortage_calc(calc_return,customerList.get(i).getInterest(),customerList.get(i).getTotal(),customerList.get(i).getInterest());
+            System.out.println(calc_return);
+
+        }
+    }
+
+    public void read(File myObj) throws IOException {
         /*try {
             List<Integer> integers = new ArrayList<>();
             Scanner myReader = new Scanner(myObj);
@@ -109,18 +130,18 @@ public class Read_function {
             Customer temp_customer = new Customer();
             info = nextLine.split(",");//; would be the delimiter
             if(i>=1) {
-                temp_customer.Name = info[0];
-                temp_customer.Total = Integer.parseInt(info[1]);
-                temp_customer.Interest = Integer.parseInt(info[2]);
-                temp_customer.Years = Integer.parseInt(info[3]);
-                System.out.println(temp_customer.Name);
-                System.out.println(temp_customer.Total);
-                System.out.println(temp_customer.Interest);
-                System.out.println(temp_customer.Years);
+                temp_customer.setName(info[0]);
+                temp_customer.setTotal(Integer.parseInt(info[1]));
+                temp_customer.setInterest(Integer.parseInt(info[2]));
+                temp_customer.setYears(Integer.parseInt(info[3]));
+                System.out.println(temp_customer.getName());
+                System.out.println(temp_customer.getTotal());
+                System.out.println(temp_customer.getInterest());
+                System.out.println(temp_customer.getYears());
                 customerList.add(temp_customer);
             }
         }
-        System.out.println(customerList);
+        calc(customerList);
         inFile.close();
     }
 }
