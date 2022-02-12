@@ -71,8 +71,8 @@ public class Read_function {
                             " for a period of " + customerList.get(i).getYears() + " years and pay " + customerList.get(i).getInterest() + " each month "
             );
             double calc_return = 0;
-           // Calc_function calc_function = new Calc_function();
-           // calc_return = calc_function.Mortage_calc(calc_return,customerList.get(i).getInterest(),customerList.get(i).getTotal(),customerList.get(i).getInterest());
+            Calc_function calc_function = new Calc_function();
+            calc_return = calc_function.Mortage_calc(calc_return,customerList.get(i).getInterest(),customerList.get(i).getTotal(),customerList.get(i).getInterest());
             System.out.println(calc_return);
 
         }
