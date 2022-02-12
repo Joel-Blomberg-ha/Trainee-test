@@ -2,23 +2,23 @@ package trainee_test;
 
 public class Customer {
     String Name;
-    int Total;
-    int Interest;
-    int Years;
+    double Total;
+    double Interest;
+    double Years;
 
     public String getName() {
         return Name;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return Total;
     }
 
-    public int getInterest() {
+    public double getInterest() {
         return Interest;
     }
 
-    public int getYears() {
+    public double getYears() {
         return Years;
     }
 

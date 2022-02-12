@@ -9,12 +9,12 @@ public class Calc_function {
     p = Number of payments
     E = U[b(1 + b)^p]/[(1 + b)^p - 1]
     *  */
-    public int Mortage_calc(int E, int b, int U, int p){
+    public double Mortage_calc(double E, double b, double U, double p){
 
-        int temp_A = b*(1+b)^p;
-        int temp_B = (1+b)^p - 1;
+       // double temp_A = b*(1+b)^p;
+       // double temp_B = (1+b)^p - 1;
 
-        E = U*(temp_A)/(temp_B);
+       // E = U*(temp_A)/(temp_B);
 
         return E;
     }

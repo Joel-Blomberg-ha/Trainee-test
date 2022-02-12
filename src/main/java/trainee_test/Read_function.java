@@ -1,10 +1,9 @@
 package trainee_test;
 
 import java.io.*;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 public class Read_function {
 
@@ -68,18 +67,19 @@ public class Read_function {
             System.out.println(customerList.get(i).getYears());
 
             System.out.println(
-                    "Prospect"+ i + ":" + customerList.get(i).getName() + "wants to borrow" + customerList.get(i).getTotal() +
-                            "for a period of" + customerList.get(i).getYears() + "years and pay" + customerList.get(i).getInterest() + "each month"
+                    "Prospect"+ i + ": " + customerList.get(i).getName() + " wants to borrow " + customerList.get(i).getTotal() +
+                            " for a period of " + customerList.get(i).getYears() + " years and pay " + customerList.get(i).getInterest() + " each month "
             );
-            int calc_return = 0;
-            Calc_function calc_function = new Calc_function();
-            calc_return = calc_function.Mortage_calc(calc_return,customerList.get(i).getInterest(),customerList.get(i).getTotal(),customerList.get(i).getInterest());
+            double calc_return = 0;
+           // Calc_function calc_function = new Calc_function();
+           // calc_return = calc_function.Mortage_calc(calc_return,customerList.get(i).getInterest(),customerList.get(i).getTotal(),customerList.get(i).getInterest());
             System.out.println(calc_return);
 
         }
     }
 
     public void read(File myObj) throws IOException {
+
         /*try {
             List<Integer> integers = new ArrayList<>();
             Scanner myReader = new Scanner(myObj);
@@ -128,18 +128,26 @@ public class Read_function {
         while((nextLine = inFile.readLine()) != null)
         {
             Customer temp_customer = new Customer();
-            info = nextLine.split(",");//; would be the delimiter
-            if(i>=1) {
+            info = nextLine.split(",");
+            if(i>=1 && info.length < 5) {
+                /* because of the inconsistency of the txt info ive had to change the way we read in information to be more specific to the text file
+                * even though I would much rather have it not matter but the structure of the first and last lines demand it
+                * */
                 temp_customer.setName(info[0]);
-                temp_customer.setTotal(Integer.parseInt(info[1]));
-                temp_customer.setInterest(Integer.parseInt(info[2]));
-                temp_customer.setYears(Integer.parseInt(info[3]));
-                System.out.println(temp_customer.getName());
-                System.out.println(temp_customer.getTotal());
-                System.out.println(temp_customer.getInterest());
-                System.out.println(temp_customer.getYears());
+                temp_customer.setTotal((int) Double.parseDouble(info[1]));
+                temp_customer.setInterest((int) Double.parseDouble(info[2]));
+                temp_customer.setYears((int) Double.parseDouble(info[3]));
                 customerList.add(temp_customer);
             }
+            else if( info.length >= 5)
+            { // it is an ugly solution but I noticed it to late and couldn't find another one in time
+                temp_customer.setName(info[0] + " " + info[1]);
+                temp_customer.setTotal((int) Double.parseDouble(info[2]));
+                temp_customer.setInterest((int) Double.parseDouble(info[3]));
+                temp_customer.setYears((int) Double.parseDouble(info[4]));
+                customerList.add(temp_customer);
+            }
+            i++;
         }
         calc(customerList);
         inFile.close();
