@@ -15,4 +15,4 @@ it seems to most likely be due to it having some special  meaning in Java that I
 --
 If there is anny confusion on how to activate the application or if I have missed to mention something you need from me please contact me through this email: joel.blombergm@gmail.com
 I look forward to hearing from you and look forward to hearing what your thoughts and criticisms on this solution are.
-Thank you for your time and have a good day.  
+Thank you for your time and have a good day.
