@@ -61,19 +61,20 @@ public class Read_function {
     public void calc(List<Customer> customerList){
         for (int i = 0; i < customerList.size();i++)
         {
-            System.out.println(customerList.get(i).getName());
+           /* System.out.println(customerList.get(i).getName());
             System.out.println(customerList.get(i).getTotal());
             System.out.println(customerList.get(i).getInterest());
             System.out.println(customerList.get(i).getYears());
+            */
 
             System.out.println(
-                    "Prospect"+ i + ": " + customerList.get(i).getName() + " wants to borrow " + customerList.get(i).getTotal() +
+                    "Prospect"+ (i+1) + ": " + customerList.get(i).getName() + " wants to borrow " + customerList.get(i).getTotal() +
                             " for a period of " + customerList.get(i).getYears() + " years and pay " + customerList.get(i).getInterest() + " each month "
             );
             double calc_return = 0;
             Calc_function calc_function = new Calc_function();
             calc_return = calc_function.Mortage_calc(calc_return,customerList.get(i).getInterest(),customerList.get(i).getTotal(),customerList.get(i).getInterest());
-            System.out.println(calc_return);
+            System.out.println("Mortage: " + calc_return);
 
         }
     }
